@@ -1,5 +1,5 @@
-﻿   var request;
-  function getXmlHttp(){
+﻿var request;
+function getXmlHttp(){
   var xmlhttp;
   try {
     xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -15,21 +15,15 @@
   }
   return xmlhttp;
 }
-  //Получаю все индексы
-  function getAllIndex(host) {	  
-	  request=getXmlHttp();
-	  request.open("GET",host,true);
-	  request.onreadystatechange=function () {
-		  if (( request.readyState == 4 ) & ( request.status==200 )) {
-			servers.updateAll(request.responseText);
-		}
-	  };
-	request.send();
-	setTimeout('getAllIndex("'+host+'")',10000);
-  }
-  
-  
-
-
-
-  
+//Получаю все индексы
+function getAllIndex(host) {	  
+  request=getXmlHttp();
+  request.open("GET",host,true);
+  request.onreadystatechange=function () {
+    if (( request.readyState == 4 ) & ( request.status==200 )) {
+      servers.updateAll(request.responseText);
+    }
+  };
+  request.send();
+  setTimeout('getAllIndex("'+host+'")',1000);
+}

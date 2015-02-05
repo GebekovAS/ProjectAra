@@ -83,13 +83,13 @@ var servers = function(){ // {{{
 		}, // }}}
 
     updateAll: function(data){
-      alert(data);
+      data = JSON.parse(data)
+      for(var host in data){
+        this.updateServer(host, data[host][0], data[host][1])
+      }
     }
 	};
 }(); // }}}
 
-servers.createNew('Test');
-servers.createNew('Test2');
-
-servers.updateServer('Test', {'addr': '192.168.1.81', 'cpu': '100%', 'mem': '100%', 'procs': 123}, {'disks': {'A': '123', 'B': '456'}});
-servers.updateServer('Test2', {'addr': '192.168.1.82', 'cpu': '100%', 'mem': '100%', 'procs': 123}, {'disks': {'A': '123', 'B': '456'}});
+servers.createNew('Host A');
+servers.createNew('Host B');
