@@ -29,7 +29,7 @@ var servers = function(){ // {{{
 	return {
 		all: {},
 
-		createNew: function(name){ // {{{
+		createNew: function(name, attrStruct, subtabStruct){ // {{{
 			var server = document.createElement('div');
 			server.setAttribute('class', 'server');
 			this.all[name] = server;
@@ -50,7 +50,11 @@ var servers = function(){ // {{{
 			}
 
 			content.subtables = {};
-			var subtable = createSubtable({'A': 'Состояние диска A: ', 'B': 'Состояние диска B: '});
+      var tabStruct = {};
+      for(var disk in subtabStruct){
+        tabStruct[disk] = 'Состояние диска [' + disk + '] ';
+      }
+			var subtable = createSubtable(tabStruct);
 			subtable.setAttribute('class', 'subtable');
 			var subtableBoxTR = document.createElement('tr');
 			var subtableBoxTD = document.createElement('td');
@@ -93,7 +97,7 @@ var servers = function(){ // {{{
       data = JSON.parse(data)
       for(var host in data){
         if(this.all[host] === undefined){
-          this.createNew(host);
+          this.createNew(host, data[host][0], data[host][1].disks);
         }
         this.updateServer(host, data[host][0], data[host][1])
       }

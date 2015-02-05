@@ -22,9 +22,11 @@ function updater(request){
   }
 }
 
-setInterval(function(){
+function requester(){
   var request=getXmlHttp();
-  request.open("GET", 'test', true);
+  request.open("GET", 'adapter/response.txt', true);
   request.onreadystatechange = updater;
   request.send();
-}, 2000);
+}
+setInterval(requester, 4000);
+requester();
