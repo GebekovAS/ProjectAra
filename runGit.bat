@@ -1,1 +1,1 @@
-git add . && git commit -m "Message" && git push
+git add . && git commit -m "Interface changed:added progressbar state disk" && git push

@@ -1,4 +1,4 @@
-var servers = function(){ // {{{
+﻿var servers = function(){ // {{{
 	function createAttr(titleText){ // {{{
 		var attr = document.createElement('tr');
 		attr.setAttribute('class', 'attrs');
@@ -88,7 +88,16 @@ var servers = function(){ // {{{
 			for(var subtableName in subtables){
 				var subtable = subtables[subtableName];
 				for(var attr in subtable){
-					server.content.subtables[subtableName].attrs[attr].value.firstChild.data = subtable[attr]
+					var arAB=subtable[attr].split(' / ');
+					var a=0;
+ 					a=1*arAB[0];
+					var b=0;
+					b=1*arAB[1];
+					var r=Math.round(((a-b)*100)/a);
+					var clr='#bfb';
+					if (r>70) clr='#fbb';
+					var innerString='<div style="width:'+r+'%; height:100%; background:'+clr+'; text-align:center">'+r+'%</div> ';
+					server.content.subtables[subtableName].attrs[attr].value.innerHTML = innerString +subtable[attr];
 				}
 			}
 		}, // }}}
