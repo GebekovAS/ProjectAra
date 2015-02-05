@@ -80,7 +80,11 @@ var servers = function(){ // {{{
 					server.content.subtables[subtableName].attrs[attr].value.firstChild.data = subtable[attr]
 				}
 			}
-		} // }}}
+		}, // }}}
+
+    updateAll: function(data){
+      alert(data);
+    }
 	};
 }(); // }}}
 
