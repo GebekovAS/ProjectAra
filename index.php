@@ -90,6 +90,7 @@
 </head>
 <body>
  <div class="root_area"> 
+ Test
 	<div class="name_area">GebekovAS-PC</div> 
 	<div class="table_area"> 
 		<table class="table_style">
