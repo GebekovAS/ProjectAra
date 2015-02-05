@@ -1,4 +1,4 @@
-﻿var request;
+﻿   var request;
   function getXmlHttp(){
   var xmlhttp;
   try {
@@ -21,20 +21,14 @@
 	  request.open("GET",host,true);
 	  request.onreadystatechange=function () {
 		  if (( request.readyState == 4 ) & ( request.status==200 )) {
-			updateAllTables(request.responseText.split(';'));
+			servers.updateAll(request.responseText);
 		}
 	  };
 	request.send();
 	setTimeout('getAllIndex("'+host+'")',10000);
-	}	
-  
-  //Получаю все данные
-  function updateAllTables(indexList) {
-	  alert(indexList);
-	  for (var i=0; i<indexList.length;i++){
-		alert(indexList[i]);
-	  }
   }
+  
+  
 
 
 
