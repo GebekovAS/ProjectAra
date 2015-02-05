@@ -1,4 +1,4 @@
-var request;
+п»їvar request;
   function getXmlHttp(){
   var xmlhttp;
   try {
@@ -15,7 +15,7 @@ var request;
   }
   return xmlhttp;
 }
-  //Получаю все индексы
+  //РџРѕР»СѓС‡Р°СЋ РІСЃРµ РёРЅРґРµРєСЃС‹
   function getAllIndex(host,resData) {	  
 	  request=getXmlHttp();
 	  var server_url=host+resData;
@@ -29,8 +29,9 @@ var request;
 		setTimeout('getAllIndex("'+host+','+resData+'")',10000);
 	}	
   
-  //Получаю все данные
+  //РџРѕР»СѓС‡Р°СЋ РІСЃРµ РґР°РЅРЅС‹Рµ
   function updateAllTables(indexList) {
+	  alert(indexList);
 	  for (var i=0; i<indexList.length;i++){
 		alert(indexList[i]);
 	  }
