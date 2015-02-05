@@ -1,0 +1,32 @@
+#servers {
+}
+.server{
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    background:#999999;
+}
+.server .title{
+    background:#bfb; 
+    margin-bottom: 10px;
+    font-family:Arial; 
+    font-size:14;
+}
+.server .content{
+    background:#ddd;
+    width: 100%;
+}
+.server .content .attrs{
+    font-family:Arial; 
+    font-size:10;
+}
+.server .content .attrs > td{
+    width: 60%;
+}
+.server .content .subtable{
+    border: 1px solid black;
+    width: 100%;
+}
+.server .content .subtable .attrs > td{
+    width: 60%;
+}
