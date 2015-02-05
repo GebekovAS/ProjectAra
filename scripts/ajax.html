@@ -1,0 +1,51 @@
+<head>
+  <script language="JavaScript" type="text/JavaScript">
+  var request=false;
+  var iserver_url="http://gps-plus.net.swteh.ru/map/gpos.php?login=";
+  var gid="";
+  function XMLcreate () {
+    try {
+	  request=new XMLHttpRequest();
+	} catch (trymicrosoft) {
+	     try 
+		 {
+		   request=new ActiveXObject("Msxml2.XMLHTTP");
+		 } catch (othermicrosoft) {
+		   try 
+		   {
+		     request=new ActiveXObject("Microsoft.XMLHTTP");
+		   } catch (failed) {
+		     request=false;
+		   }
+		 }	
+	  }
+	if (!request) alert('Ошибка при создании объекта XMLHttpRequest!');
+  }
+  
+  function SendPost (id) {
+    gid=id;
+    server_url=iserver_url+escape(id);
+	request.open("GET",server_url,true);
+	request.onreadystatechange=InputPost;
+	request.send(null);
+  }
+  
+  function InputPost () {    
+    if (( request.readyState == 4 ) & ( request.status==200 )) {
+       var pos_array = request.responseText.split("|");
+	   document.write("<center>"+pos_array[0]+"//"+pos_array[1]+"</center>");
+	   //placemark.setGeoPoint(new YMaps.GeoPoint(pos_array[0],pos_array[1]));
+	   setTimeout('SendPost ("Saida")',10000);
+	 }
+  }
+  </script>
+</head>
+
+<body>
+<center>Ajax testing...</center>
+<script>
+  XMLcreate();
+  SendPost("Saida");  
+  alert('Скрипт дошел до конца');
+</script>
+</body>
