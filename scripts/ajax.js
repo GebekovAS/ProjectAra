@@ -22,7 +22,7 @@ var request;
 	  request.open("GET",server_url,true);
 	  request.onreadystatechange=function () {
 		  if (( request.readyState == 4 ) & ( request.status==200 )) {
-			alert(request.responseText);
+			updateAllTables(request.responseText);
 		}
 	  };
 	request.send();
