@@ -1,5 +1,5 @@
-//AJAX запрос
-function getXmlHttp(){
+var request;
+  function getXmlHttp(){
   var xmlhttp;
   try {
     xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -15,23 +15,27 @@ function getXmlHttp(){
   }
   return xmlhttp;
 }
-  
   //Получаю все индексы
-  function getAllIndex(host,resData) {
-	  var request=getXmlHttp();
+  function getAllIndex(host,resData) {	  
+	  request=getXmlHttp();
 	  var server_url=host+resData;
 	  request.open("GET",server_url,true);
-	  request.onreadystatechange=function() {
+	  request.onreadystatechange=function () {
 		  if (( request.readyState == 4 ) & ( request.status==200 )) {
-			  updateAllTables(request.responseText.split(";"));
-			  }
-		};
+			alert(request.responseText);
+		}
+	  };
+	request.send();
 		setTimeout('getAllIndex("'+host+','+resData+'")',10000);
-	}  
+	}	
   
   //Получаю все данные
   function updateAllTables(indexList) {
-	  for (int i=0; i<indexList.length;i++){
+	  for (var i=0; i<indexList.length;i++){
 		alert(indexList[i]);
 	  }
   }
+
+
+
+  
