@@ -12,6 +12,7 @@
     font-size:14;
 	padding:5px; 
 	margin: 10px auto;
+    margin-top: 0px;
     text-align: center;
 }
 .server .content{
@@ -26,7 +27,7 @@
     width: 60%;
 }
 .server .content .subtable{
-    border: 1px solid black;
+    border: 1px solid silver;
     width: 100%;
 }
 .server .content .subtable .attrs > td{

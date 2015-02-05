@@ -1,4 +1,4 @@
-var servers = function(){
+var servers = function(){ // {{{
 	function createAttr(titleText){ // {{{
 		var attr = document.createElement('tr');
 		attr.setAttribute('class', 'attrs');
@@ -28,6 +28,7 @@ var servers = function(){
 
 	return {
 		all: [],
+
 		createNew: function(name){ // {{{
 			var server = document.createElement('div');
 			server.setAttribute('class', 'server');
@@ -81,10 +82,10 @@ var servers = function(){
 			}
 		} // }}}
 	};
-}();
+}(); // }}}
 
 servers.createNew('Test');
 servers.createNew('Test2');
 
-servers.updateServer('Test', {'addr': '192,168.1.81', 'cpu': '100%', 'mem': '100%', 'procs': 123}, {'disks': {'A': '123', 'B': '456'}});
-servers.updateServer('Test2', {'addr': '192,168.1.82', 'cpu': '100%', 'mem': '100%', 'procs': 123}, {'disks': {'A': '123', 'B': '456'}});
+servers.updateServer('Test', {'addr': '192.168.1.81', 'cpu': '100%', 'mem': '100%', 'procs': 123}, {'disks': {'A': '123', 'B': '456'}});
+servers.updateServer('Test2', {'addr': '192.168.1.82', 'cpu': '100%', 'mem': '100%', 'procs': 123}, {'disks': {'A': '123', 'B': '456'}});
