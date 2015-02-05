@@ -18,8 +18,7 @@
   //Получаю все индексы
   function getAllIndex(host) {	  
 	  request=getXmlHttp();
-	  var server_url=host+resData;
-	  request.open("GET",server_url,true);
+	  request.open("GET",host,true);
 	  request.onreadystatechange=function () {
 		  if (( request.readyState == 4 ) & ( request.status==200 )) {
 			updateAllTables(request.responseText.split(';'));
