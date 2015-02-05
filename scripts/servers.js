@@ -27,7 +27,7 @@ var servers = function(){ // {{{
 	} // }}}
 
 	return {
-		all: [],
+		all: {},
 
 		createNew: function(name){ // {{{
 			var server = document.createElement('div');
@@ -42,7 +42,7 @@ var servers = function(){ // {{{
 			content.setAttribute('class', 'content');
 
 			content.attrs = {};
-			var attrs = {'addr': 'Адрес хоста: ', 'cpu': 'Нагрузка на ЦП: ', 'mem': 'Загрузка памяти: ', 'procs': 'Количество процессов: '};
+			var attrs = {'addr': 'Адрес хоста: ', 'cpu': 'Нагрузка на ЦП: ', 'mem': 'Загрузка памяти: ', 'procs': 'Количество процессов: ', 'ping': 'Пинг: '};
 			for(var attrName in attrs){
 				var attr = createAttr(attrs[attrName]);
 				content.attrs[attrName] = attr;
@@ -61,6 +61,7 @@ var servers = function(){ // {{{
 			content.subtables['disks'] = subtable
 			
 			server.appendChild(title);
+			server.t = title;
 			server.appendChild(content);
 			server.content = content;
 			document.getElementById('servers').appendChild(server);
@@ -69,6 +70,12 @@ var servers = function(){ // {{{
 
 		updateServer: function(name, attrs, subtables){ // {{{
 			var server = this.all[name];
+      if(server.content.attrs.ping.value.firstChild.data == attrs.ping){
+        server.t.style.background = 'red';
+      }
+      else{
+        server.t.style.background = '#bfb';
+      }
 			// Обновление атрибутов.
 			for(var attrName in attrs){
 				server.content.attrs[attrName].value.firstChild.data = attrs[attrName];
@@ -82,14 +89,14 @@ var servers = function(){ // {{{
 			}
 		}, // }}}
 
-    updateAll: function(data){
+    updateAll: function(data){ // {{{
       data = JSON.parse(data)
       for(var host in data){
+        if(this.all[host] === undefined){
+          this.createNew(host);
+        }
         this.updateServer(host, data[host][0], data[host][1])
       }
-    }
+    } // }}}
 	};
 }(); // }}}
-
-servers.createNew('Host A');
-servers.createNew('Host B');
