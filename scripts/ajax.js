@@ -16,7 +16,7 @@
   return xmlhttp;
 }
   //Получаю все индексы
-  function getAllIndex(host,resData) {	  
+  function getAllIndex(host) {	  
 	  request=getXmlHttp();
 	  var server_url=host+resData;
 	  request.open("GET",server_url,true);
@@ -26,7 +26,7 @@
 		}
 	  };
 	request.send();
-		setTimeout('getAllIndex("'+host+','+resData+'")',10000);
+	setTimeout('getAllIndex("'+host+'")',10000);
 	}	
   
   //Получаю все данные
