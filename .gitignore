@@ -1,8 +1,5 @@
 *.swp
 adapter/response.txt
-<<<<<<< HEAD
-=======
-/adapter/AdapterRunWindows.bat
-/adapter/AdapterRun.sh
-/adapter/*
->>>>>>> origin/master
+adapter/AdapterRunWindows.bat
+adapter/AdapterRun.sh
+adapter/*
