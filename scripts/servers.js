@@ -52,8 +52,10 @@
 			newSubItem.newCaption=setNewCaption;
 			newSubItem.newValue=setNewValue;
 			content.items[itemsName]=newSubItem;
-			content.appendChild(newSubItem);		
-			newSubItem.newCaption(itemsName);
+			content.appendChild(newSubItem);	
+			
+			newSubItem.newCaption(items[itemsName].title);
+			newSubItem.newValue(items[itemsName].value);
 		}
 		
 		cView.appendChild(title);
@@ -70,11 +72,10 @@
 	
 	//Обновление всех значений
 	function viewUpdater(data) {
-		alert(data);
 		data = JSON.parse(data)
 		for(var host in data){
 			if(allViews[host] === undefined){
-				this.createSubView(host, data[host][0]);
+				this.createSubView(host, data[host]);
 			}
 
 		}
