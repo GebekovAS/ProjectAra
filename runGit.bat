@@ -1,1 +1,3 @@
-git add . && git commit -m "Interface changed:added progressbar state disk" && git push
+﻿chcp 65001
+set /p input="Comment please: "
+git add . && git commit -m "%input%" && git push
