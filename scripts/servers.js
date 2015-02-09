@@ -1,115 +1,81 @@
-﻿var servers = function(){ // {{{
-	function createAttr(titleText){ // {{{
-		var attr = document.createElement('tr');
-		attr.setAttribute('class', 'attrs');
-
+﻿	var allViews={};
+	
+	//Метод обновляет значнеие заголовка параметра
+	function setNewCaption(propertyText) {
+		this.Caption.firstChild.data=propertyText;
+		return;
+	}
+	
+	//метод обновляет значение параметра
+	function setNewValue(propertyText) {
+		this.Value.firstChild.data=propertyText;
+		return;
+	}
+ 
+	
+	//Метод создает элемент
+	function createSubItem() {
+		var trEl = document.createElement('tr');
+		trEl.setAttribute('class', 'attrs');	
+		
 		var title = document.createElement('td');
-		title.appendChild(document.createTextNode(titleText));
+		title.appendChild(document.createTextNode(''));
 		var value = document.createElement('td');
 		value.appendChild(document.createTextNode(''));
-
-		attr.appendChild(title);
-		attr.appendChild(value);
-		attr.value = value;
-
-		return attr;
-	} // }}}
-
-	function createSubtable(attrs){ // {{{
-		var subtable = document.createElement('table')
-		subtable.attrs = {};
-		for(var id in attrs){
-			var tr = createAttr(attrs[id]);
-			subtable.appendChild(tr);
-			subtable.attrs[id] = tr;
-		}
-		return subtable;
-	} // }}}
-
-	return {
-		all: {},
-
-		createNew: function(name, attrStruct, subtabStruct){ // {{{
-			var server = document.createElement('div');
-			server.setAttribute('class', 'server');
-			this.all[name] = server;
-
-			var title = document.createElement('div');
+		
+		trEl.appendChild(title);
+		trEl.appendChild(value);
+		trEl.Caption=title;
+		trEl.Value=value;	
+		return trEl;
+	}	
+	
+	
+	//Метод создает новую область отображения свойств устройства
+	function createSubView(name,items) {
+		var cView=document.createElement('div');
+		
+		cView.setAttribute('class', 'server');
+		allViews[name]=cView;
+		
+		var title = document.createElement('div');
 			title.setAttribute('class', 'title');
-			title.appendChild(document.createTextNode(name))
-
-			var content = document.createElement('table');
-			content.setAttribute('class', 'content');
-
-			content.attrs = {};
-			var attrs = {'addr': 'Адрес хоста: ', 'cpu': 'Нагрузка на ЦП: ', 'mem': 'Загрузка памяти: ', 'procs': 'Количество процессов: ', 'ping': 'Пинг: '};
-			for(var attrName in attrs){
-				var attr = createAttr(attrs[attrName]);
-				content.attrs[attrName] = attr;
-				content.appendChild(attr);
-			}
-
-			content.subtables = {};
-      var tabStruct = {};
-      for(var disk in subtabStruct){
-        tabStruct[disk] = 'Состояние диска [' + disk + '] ';
-      }
-			var subtable = createSubtable(tabStruct);
-			subtable.setAttribute('class', 'subtable');
-			var subtableBoxTR = document.createElement('tr');
-			var subtableBoxTD = document.createElement('td');
-			subtableBoxTD.setAttribute('colspan', '2');
-			subtableBoxTD.appendChild(subtable);
-			subtableBoxTR.appendChild(subtableBoxTD);
-			content.appendChild(subtableBoxTR);
-			content.subtables['disks'] = subtable
+			title.appendChild(document.createTextNode(name));
 			
-			server.appendChild(title);
-			server.t = title;
-			server.appendChild(content);
-			server.content = content;
-			document.getElementById('servers').appendChild(server);
-			return server;
-		}, // }}}
-
-		updateServer: function(name, attrs, subtables){ // {{{
-			var server = this.all[name];
-      if(server.content.attrs.ping.value.firstChild.data == attrs.ping){
-        server.t.style.background = 'red';
-      }
-      else{
-        server.t.style.background = '#bfb';
-      }
-			// Обновление атрибутов.
-			for(var attrName in attrs){
-				server.content.attrs[attrName].value.firstChild.data = attrs[attrName];
+		var content = document.createElement('table');
+			content.setAttribute('class', 'content');
+		
+		content.items = {};
+		
+		for (var itemsName in items) {
+			var newSubItem = createSubItem();	
+			newSubItem.newCaption=setNewCaption;
+			newSubItem.newValue=setNewValue;
+			content.items[itemsName]=newSubItem;
+			content.appendChild(newSubItem);		
+			newSubItem.newCaption(itemsName);
+		}
+		
+		cView.appendChild(title);
+		cView.Caption = title;
+		cView.appendChild(content);
+		cView.content = content;
+		
+		
+		
+		document.getElementById('servers').appendChild(cView);
+			
+		return cView;		
+	}
+	
+	//Обновление всех значений
+	function viewUpdater(data) {
+		alert(data);
+		data = JSON.parse(data)
+		for(var host in data){
+			if(allViews[host] === undefined){
+				this.createSubView(host, data[host][0]);
 			}
-			// Обновление таблиц.
-			for(var subtableName in subtables){
-				var subtable = subtables[subtableName];
-				for(var attr in subtable){
-					var arAB=subtable[attr].split(' / ');
-					var a=0;
- 					a=1*arAB[0];
-					var b=0;
-					b=1*arAB[1];
-					var r=Math.round(((a-b)*100)/a);
-					var clr='#bfb';
-					if (r>70) clr='#fbb';
-					var innerString='<div style="width:'+r+'%; height:100%; background:'+clr+'; text-align:center">'+r+'%</div> ';
-					server.content.subtables[subtableName].attrs[attr].value.innerHTML = innerString +subtable[attr];
-				}
-			}
-		}, // }}}
 
-    updateAll: function(data){ // {{{
-      data = JSON.parse(data)
-      for(var host in data){
-        if(this.all[host] === undefined){
-          this.createNew(host, data[host][0], data[host][1].disks);
-        }
-        this.updateServer(host, data[host][0], data[host][1])
-      }
-    } // }}}
-	};
-}(); // }}}
+		}
+	}

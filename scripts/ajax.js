@@ -16,9 +16,9 @@
 }
 
 function updater(request){
-  var request = request.target
+  var request = request.target;
   if (( request.readyState == 4 ) & ( request.status==200 )) {
-    servers.updateAll(request.responseText);
+    viewUpdater(request.responseText);
   }
 }
 
@@ -28,5 +28,5 @@ function requester(){
   request.onreadystatechange = updater;
   request.send();
 }
-setInterval(requester, 4000);
+//setInterval(requester, 4000);
 requester();
