@@ -98,9 +98,9 @@
 	}
 	
 	function updateAll(name,items) {
-		alert(allViews[host]);
+		alert(allViews[name]);
 		for(var item in items) {
-			allViews[host].content.items[items[item].name].Value.innerHTML=items[itemsName].value;			
+			allViews[name].content.items[item].Value.innerHTML=items[itemsName].value;			
 		}		
 	}
 	//Обновление всех значений
