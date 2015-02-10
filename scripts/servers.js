@@ -100,6 +100,7 @@
 	function updateAll(name,items) {		
 		for(var item in items) {
 			var atrName=items[item].name;
+			alert(atrName);
 			alert(allViews[name].content.items[atrName].Value.innerHTML);
 			//allViews[name].content.items[items[item].name].Value.innerHTML=items[itemsName].value;			
 		}		
