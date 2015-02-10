@@ -97,11 +97,11 @@
 		return cView;		
 	}
 	
-	function updateAll(name,items) {		
-		for(var item in items) {
-			var atrName=items[item].name;
-			alert(atrName);
-			alert(allViews[name].content.items[atrName].Value.innerHTML);
+	function updateAll(name,attrs) {		
+		for(var item in attrs) {
+			var atrName=attrs[item].name;
+			alert(allViews[name].content.attrs[item]);
+			alert(allViews[name].content.items[atrName]);
 			//allViews[name].content.items[items[item].name].Value.innerHTML=items[itemsName].value;			
 		}		
 	}
