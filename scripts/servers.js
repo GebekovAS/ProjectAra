@@ -13,7 +13,7 @@
 	}
 	
 	//Метод возвращает прогресс бар для значений
-	/*function getProgressBar (vl) {
+	function getProgressBar (vl) {
 		var arAB=vl.split('/');
 		var a=0;
 		a=1*arAB[0];
@@ -23,7 +23,7 @@
 		var clr='#bfb';
 		if (r>70) clr='#fbb';
 		return '<div style="width:'+r+'%; height:100%; background:'+clr+'; text-align:center">'+r+'%</div> ';
-	}*/
+	}
  
 	
 	//Метод создает элемент
@@ -59,30 +59,27 @@
 		
 		content.items = {};
 		
-		alert('1');
 		for (var itemsName in items) {
 			var newSubItem = createSubItem();	
 			newSubItem.newCaption=setNewCaption;
 			newSubItem.newValue=setNewValue;
 			content.items[itemsName]=newSubItem;
-			content.appendChild(newSubItem);
+			content.appendChild(newSubItem);	
 			
-			newSubItem.newCaption(items[itemsName].title);
-			newSubItem.newValue(items[itemsName].value);
-			
-			/*var aT=items[itemsName].title;
-			var aV=items[itemsName].value;*/
+			var aT=items[itemsName].title;
+			var aV=items[itemsName].value;
 			
 
 			//alert(items[itemsName]);
 			//if (items[itemsName].type=="disk_status") aV=getProgressBar(aV)+aV;	
-			}
+			newSubItem.newCaption(aT);
+			newSubItem.newValue(aV);			
 		}
 		
 		cView.appendChild(title);
 		cView.Caption = title;
 		cView.appendChild(content);
-		cView.content = content;	
+		cView.content = content;
 		
 		document.getElementById('servers').appendChild(cView);
 			
