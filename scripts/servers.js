@@ -90,10 +90,11 @@
 		return cView;		
 	}
 	
+	//Метод обновляет данные элементов указанного области
 	function updateAll(name,attrs) {		
 		for(var item in attrs) {
 			if (allViews[name].content.items[item] === undefined) {} else {
-				var ttl=attrs[item].value;
+				var vl=attrs[item].value;
 				
 				if (attrs[item].type=="ping")
 					if(allViews[name].content.items[item].Value.innerHTML == attrs[item].value){
@@ -103,12 +104,13 @@
 						allViews[name].Caption.style.background = '#bfb';
 					}
 				
-				if (attrs[item].type=="disk_status") ttl=getProgressBar(ttl)+ttl;	
+				if (attrs[item].type=="disk_status") vl=getProgressBar(vl)+vl;	
 				
-				allViews[name].content.items[item].Value.innerHTML=attrs[item].value;
+				allViews[name].content.items[item].Value.innerHTML=vl;
 			}			
 		}		
 	}
+	
 	//Обновление всех значений
 	function viewUpdater(data) {
 		data = JSON.parse(data)
