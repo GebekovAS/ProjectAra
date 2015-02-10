@@ -11,6 +11,19 @@
 		this.Value.firstChild.data=propertyText;
 		return;
 	}
+	
+	//Метод возвращает прогресс бар для значений
+	function getProgressBar (vl) {
+		var arAB=vl.split('/');
+		var a=0;
+		a=1*arAB[0];
+		var b=0;
+		b=1*arAB[1];
+		var r=Math.round(((a-b)*100)/a);
+		var clr='#bfb';
+		if (r>70) clr='#fbb';
+		return '<div style="width:'+r+'%; height:100%; background:'+clr+'; text-align:center">'+r+'%</div> ';
+	}
  
 	
 	//Метод создает элемент
@@ -29,7 +42,6 @@
 		trEl.Value=value;	
 		return trEl;
 	}	
-	
 	
 	//Метод создает новую область отображения свойств устройства
 	function createSubView(name,items) {
@@ -54,15 +66,19 @@
 			content.items[itemsName]=newSubItem;
 			content.appendChild(newSubItem);	
 			
-			newSubItem.newCaption(items[itemsName].title);
-			newSubItem.newValue(items[itemsName].value);
+			var aT=items[itemsName].title;
+			var aV=items[itemsName].value;
+			
+			if (items[itemsName].type=="disk_status") aV=getProgressBar(aV)+aV;	
+			newSubItem.newCaption(aT);
+			newSubItem.newValue(aV);
+			}
 		}
 		
 		cView.appendChild(title);
 		cView.Caption = title;
 		cView.appendChild(content);
-		cView.content = content;
-		
+		cView.content = content;	
 		
 		
 		document.getElementById('servers').appendChild(cView);
