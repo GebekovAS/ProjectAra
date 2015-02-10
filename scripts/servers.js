@@ -60,18 +60,22 @@
 		content.items = {};
 		
 		for (var itemsName in items) {
-			var newSubItem = createSubItem();	
-			newSubItem.newCaption=setNewCaption;
-			newSubItem.newValue=setNewValue;
-			content.items[itemsName]=newSubItem;
-			content.appendChild(newSubItem);	
+			if (items[itemsName].type=="cpu_title") {
+				title.firstChild.data=items[itemsName].value;		
+			} else {
+				var newSubItem = createSubItem();	
+				newSubItem.newCaption=setNewCaption;
+				newSubItem.newValue=setNewValue;
+				content.items[itemsName]=newSubItem;
+				content.appendChild(newSubItem);
 			
-			var aT=items[itemsName].title;
-			var aV=items[itemsName].value;			
+				var aT=items[itemsName].title;
+				var aV=items[itemsName].value;			
 
-			if (items[itemsName].type=="disk_status") aV=getProgressBar(aV)+aV;	
-			newSubItem.newCaption(aT);
-			newSubItem.newValue(aV);			
+				if (items[itemsName].type=="disk_status") aV=getProgressBar(aV)+aV;	
+				newSubItem.newCaption(aT);
+				newSubItem.newValue(aV);
+			}			
 		}
 		
 		cView.appendChild(title);
