@@ -28,5 +28,5 @@ function requester(){
   request.onreadystatechange = updater;
   request.send();
 }
-//setInterval(requester, 4000);
+setInterval(requester, 4000);
 requester();
