@@ -100,7 +100,7 @@
 	function updateAll(name,attrs) {		
 		for(var item in attrs) {
 			if (allViews[name].content.items[item] === undefined) {} else {
-				allViews[name].content.items[item].Value.innerHTML=allViews[name].value;
+				allViews[name].content.items[item].Value.innerHTML=attrs[name].value;
 			}			
 		}		
 	}
