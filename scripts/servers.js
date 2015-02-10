@@ -67,11 +67,9 @@
 			content.appendChild(newSubItem);	
 			
 			var aT=items[itemsName].title;
-			var aV=items[itemsName].value;
-			
+			var aV=items[itemsName].value;			
 
-			//alert(items[itemsName]);
-			//if (items[itemsName].type=="disk_status") aV=getProgressBar(aV)+aV;	
+			if (items[itemsName].type=="disk_status") aV=getProgressBar(aV)+aV;	
 			newSubItem.newCaption(aT);
 			newSubItem.newValue(aV);			
 		}
