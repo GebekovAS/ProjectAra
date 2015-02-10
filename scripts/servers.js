@@ -99,8 +99,8 @@
 	
 	function updateAll(name,attrs) {		
 		for(var item in attrs) {
-			if (allViews[host] === undefined) {} else {
-				alert(allViews[name].content.items[item].Value.innerHTML);
+			if (allViews[name].content.items[item] === undefined) {} else {
+				allViews[name].content.items[item].Value.innerHTML=allViews[name].value;
 			}			
 		}		
 	}
