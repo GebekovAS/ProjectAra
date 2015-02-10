@@ -99,7 +99,9 @@
 	
 	function updateAll(name,attrs) {		
 		for(var item in attrs) {
-			alert(allViews[name].content.items[item]);			
+			if (allViews[host] === undefined) {} else {
+				alert(allViews[name].content.items[item].Value.innerHTML);
+			}			
 		}		
 	}
 	//Обновление всех значений
