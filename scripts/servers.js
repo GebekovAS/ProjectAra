@@ -62,7 +62,7 @@
 		for (var itemsName in items) {
 			
 			if (items[itemsName].type=="ping")
-				if(cView.content.items.ping.Value.innerHTML == items[itemsName].value){
+				if(cView.content.items["ping"].Value.innerHTML == items[itemsName].value){
 					cView.Caption.style.background = 'red';
 					}
 					else{
