@@ -60,7 +60,7 @@
 		content.items = {};
 		
 		for (var itemsName in items) {
-			
+			/*
 			if (items[itemsName].type=="ping")
 				if(cView.content.items["ping"].Value.innerHTML == items[itemsName].value){
 					cView.Caption.style.background = 'red';
@@ -68,7 +68,7 @@
 					else{
 						server.Caption.style.background = '#bfb';
 					}
-					
+					*/
 			if (items[itemsName].type=="cpu_title") {
 				title.firstChild.data=items[itemsName].value;		
 			} else {
@@ -97,12 +97,19 @@
 		return cView;		
 	}
 	
+	function updateAll(name,items) {
+		for(var item in items) {
+			allViews[host].content.items[item].Value.innerHTML=items[itemsName].value;			
+		}		
+	}
 	//Обновление всех значений
 	function viewUpdater(data) {
 		data = JSON.parse(data)
 		for(var host in data){
 			if(allViews[host] === undefined){
 				this.createSubView(host, data[host]);
+			} else {
+				updateAll(host,data[host]);
 			}
 
 		}
