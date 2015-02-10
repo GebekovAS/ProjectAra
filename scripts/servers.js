@@ -59,16 +59,9 @@
 		
 		content.items = {};
 		
-		for (var itemsName in items) {
-			/*
-			if (items[itemsName].type=="ping")
-				if(cView.content.items["ping"].Value.innerHTML == items[itemsName].value){
-					cView.Caption.style.background = 'red';
-					}
-					else{
-						server.Caption.style.background = '#bfb';
-					}
-					*/
+		for (var itemsName in items) {			
+			
+					
 			if (items[itemsName].type=="cpu_title") {
 				title.firstChild.data=items[itemsName].value;		
 			} else {
@@ -100,6 +93,18 @@
 	function updateAll(name,attrs) {		
 		for(var item in attrs) {
 			if (allViews[name].content.items[item] === undefined) {} else {
+				var ttl=attrs[item].value;
+				
+				if (attrs[item].type=="ping")
+					if(allViews[name].content.items[item].Value.innerHTML == attrs[item].value){
+						allViews[name].Caption.style.background = 'red';
+					}
+					else{
+						server.Caption.style.background = '#bfb';
+					}
+				
+				if (attrs[itemsName].type=="disk_status") ttl=getProgressBar(ttl)+ttl;	
+				
 				allViews[name].content.items[item].Value.innerHTML=attrs[item].value;
 			}			
 		}		
