@@ -13,7 +13,7 @@
 	}
 	
 	//Метод возвращает прогресс бар для значений
-	function getProgressBar (vl) {
+	/*function getProgressBar (vl) {
 		var arAB=vl.split('/');
 		var a=0;
 		a=1*arAB[0];
@@ -23,7 +23,7 @@
 		var clr='#bfb';
 		if (r>70) clr='#fbb';
 		return '<div style="width:'+r+'%; height:100%; background:'+clr+'; text-align:center">'+r+'%</div> ';
-	}
+	}*/
  
 	
 	//Метод создает элемент
