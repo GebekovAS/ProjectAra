@@ -97,10 +97,11 @@
 		return cView;		
 	}
 	
-	function updateAll(name,items) {
-		alert(allViews[name]);
+	function updateAll(name,items) {		
 		for(var item in items) {
-			allViews[name].content.items[items[item].name].Value.innerHTML=items[itemsName].value;			
+			var atrName=items[item].name;
+			alert(allViews[name].content.items[atrName].Value.innerHTML);
+			//allViews[name].content.items[items[item].name].Value.innerHTML=items[itemsName].value;			
 		}		
 	}
 	//Обновление всех значений
