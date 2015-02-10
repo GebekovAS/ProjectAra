@@ -98,6 +98,7 @@
 	}
 	
 	function updateAll(name,items) {
+		alert(allViews[host]);
 		for(var item in items) {
 			allViews[host].content.items[item].Value.innerHTML=items[itemsName].value;			
 		}		
