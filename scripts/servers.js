@@ -103,7 +103,7 @@
 						server.Caption.style.background = '#bfb';
 					}
 				
-				if (attrs[itemsName].type=="disk_status") ttl=getProgressBar(ttl)+ttl;	
+				if (attrs[item].type=="disk_status") ttl=getProgressBar(ttl)+ttl;	
 				
 				allViews[name].content.items[item].Value.innerHTML=attrs[item].value;
 			}			
