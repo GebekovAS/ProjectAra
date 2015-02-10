@@ -71,7 +71,7 @@
 			
 
 			alert(items[itemsName].type);
-			if (items[itemsName].type=="disk_status") aV=getProgressBar(aV)+aV;	
+			//if (items[itemsName].type=="disk_status") aV=getProgressBar(aV)+aV;	
 			newSubItem.newCaption(aT);
 			newSubItem.newValue(aV);
 			}
