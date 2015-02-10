@@ -70,7 +70,7 @@
 			var aV=items[itemsName].value;
 			
 
-			alert(items[itemsName].type);
+			//alert(items[itemsName]);
 			//if (items[itemsName].type=="disk_status") aV=getProgressBar(aV)+aV;	
 			newSubItem.newCaption(aT);
 			newSubItem.newValue(aV);
