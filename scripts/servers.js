@@ -100,7 +100,7 @@
 	function updateAll(name,items) {
 		alert(allViews[host]);
 		for(var item in items) {
-			allViews[host].content.items[item].Value.innerHTML=items[itemsName].value;			
+			allViews[host].content.items[items[item].name].Value.innerHTML=items[itemsName].value;			
 		}		
 	}
 	//Обновление всех значений
