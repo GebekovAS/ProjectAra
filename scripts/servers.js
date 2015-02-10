@@ -60,6 +60,12 @@
 		content.items = {};
 		
 		for (var itemsName in items) {
+			if(cView.content.items.ping.Value.innerHTML == attrs.ping){
+				cView.Caption.style.background = 'red';
+				}
+				else{
+					server.Caption.style.background = '#bfb';
+				}
 			if (items[itemsName].type=="cpu_title") {
 				title.firstChild.data=items[itemsName].value;		
 			} else {
