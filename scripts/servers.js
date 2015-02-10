@@ -100,7 +100,7 @@
 						allViews[name].Caption.style.background = 'red';
 					}
 					else{
-						server.Caption.style.background = '#bfb';
+						allViews[name].Caption.style.background = '#bfb';
 					}
 				
 				if (attrs[item].type=="disk_status") ttl=getProgressBar(ttl)+ttl;	
