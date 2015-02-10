@@ -2,13 +2,13 @@
 	
 	//Метод обновляет значнеие заголовка параметра
 	function setNewCaption(propertyText) {
-		this.Caption.firstChild.data=propertyText;
+		this.Caption.firstChild.innerHTML=propertyText;
 		return;
 	}
 	
 	//метод обновляет значение параметра
 	function setNewValue(propertyText) {
-		this.Value.firstChild.data=propertyText;
+		this.Value.firstChild.innerHTML=propertyText;
 		return;
 	}
 	
