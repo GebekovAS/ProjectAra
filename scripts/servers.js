@@ -59,12 +59,16 @@
 		
 		content.items = {};
 		
+		alert('1');
 		for (var itemsName in items) {
 			var newSubItem = createSubItem();	
 			newSubItem.newCaption=setNewCaption;
 			newSubItem.newValue=setNewValue;
 			content.items[itemsName]=newSubItem;
-			content.appendChild(newSubItem);	
+			content.appendChild(newSubItem);
+			
+			newSubItem.newCaption(items[itemsName].title);
+			newSubItem.newValue(items[itemsName].value);
 			
 			/*var aT=items[itemsName].title;
 			var aV=items[itemsName].value;*/
@@ -72,8 +76,6 @@
 
 			//alert(items[itemsName]);
 			//if (items[itemsName].type=="disk_status") aV=getProgressBar(aV)+aV;	
-			newSubItem.newCaption(items[itemsName].title);
-			newSubItem.newValue(items[itemsName].value);
 			}
 		}
 		
@@ -81,7 +83,6 @@
 		cView.Caption = title;
 		cView.appendChild(content);
 		cView.content = content;	
-		
 		
 		document.getElementById('servers').appendChild(cView);
 			
