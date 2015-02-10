@@ -99,9 +99,7 @@
 	
 	function updateAll(name,attrs) {		
 		for(var item in attrs) {
-			var atrName=attrs[item].name;
-			alert(allViews[name].content.items[item].Value.innerHTML);
-			//allViews[name].content.items[items[item].name].Value.innerHTML=items[itemsName].value;			
+			alert(allViews[name].content.items[item]);			
 		}		
 	}
 	//Обновление всех значений
