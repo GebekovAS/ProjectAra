@@ -33,8 +33,10 @@
 		
 		var title = document.createElement('td');
 		title.appendChild(document.createTextNode(''));
+		title.setAttribute('class', 'titleTD');
 		var value = document.createElement('td');
 		value.appendChild(document.createTextNode(''));
+		value.setAttribute('class', 'valueTD');
 		
 		trEl.appendChild(title);
 		trEl.appendChild(value);
