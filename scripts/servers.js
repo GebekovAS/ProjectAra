@@ -98,10 +98,10 @@
 				
 				if (attrs[item].type=="ping")
 					if(allViews[name].content.items[item].Value.innerHTML == attrs[item].value){
-						allViews[name].Caption.style.background = 'red';
+						allViews[name].Caption.style.background = '#f29f8e';
 					}
 					else{
-						allViews[name].Caption.style.background = '#bfb';
+						allViews[name].Caption.style.background = '#c0ffc0';
 					}
 				
 				if (attrs[item].type=="disk_status") vl=getProgressBar(vl)+vl;	

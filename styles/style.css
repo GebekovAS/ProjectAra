@@ -4,10 +4,11 @@
     float: left;
     margin: 10px;
     padding: 10px;
-    background:#999999;
+    background:#ddd;
+	border: 1px #80b5ff solid;
 }
 .server .title{
-    background:#bfb; 
+    background:#c0ffc0; 
     font-family:Arial; 
     font-size:14;
 	padding:5px; 
@@ -16,15 +17,18 @@
     text-align: center;
 }
 .server .content{
-    background:#ddd;
+    background:#eee;
     width: 100%;
+	border: 1px #bdf solid;
 }
 .server .content .attrs{
     font-family:Arial; 
-    font-size:10;
+    font-size:10;	
 }
+
 .server .content .attrs > td{
     width: 60%;
+	
 }
 .server .content .subtable{
     border: 1px solid silver;
