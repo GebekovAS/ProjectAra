@@ -46,9 +46,8 @@
 	}	
 	
 	//Метод создает новую область отображения свойств устройства
-	function createSubView(name,items) {
-		var cView=document.createElement('div');
-		
+	function createSubView(name,items) {  
+		var cView=document.createElement('div');		
 		cView.setAttribute('class', 'server');
 		allViews[name]=cView;
 		
@@ -87,7 +86,22 @@
 		cView.appendChild(content);
 		cView.content = content;
 		
-		document.getElementById('servers').appendChild(cView);
+		var cTable=document.createElement('table');
+		cTable.setAttribute('class', 'tables');
+		var cTr=document.createElement('tr');
+		var cTd=document.createElement('td');
+		cTd.appendChild(cView);
+		cTr.appendChild(cTd);
+		cTable.appendChild(cTr);
+		cTr=document.createElement('tr');
+		cTd=document.createElement('td');
+		
+		cTd.setAttribute('style', 'background:url(img/service_shadow.png) no-repeat; background-size: 100%; -moz-background-size: 100%; height:35px;');
+		//cTd.innerHTML='<center><img style="margin-top:-2px; width:80%;" src="img/service_shadow.png"\></center>';
+		cTr.appendChild(cTd);
+		cTable.appendChild(cTr);
+		
+		document.getElementById('servers').appendChild(cTable);
 			
 		return cView;		
 	}

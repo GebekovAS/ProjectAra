@@ -10,11 +10,21 @@
 }
 .server{
     float: left;
-    margin: 10px;
+    margin: 0px;
     padding: 10px;
     background:#ddd;
 	border: 1px #80b5ff solid;
+	border-radius: 10px;
+	
 }
+
+.tables{
+    float: left;
+	padding: 0px;
+	border-spacing: 0px 0px;
+	margin: 10px;
+}
+
 .server .title{
     background:#c0ffc0; 
     font-family:Arial; 
@@ -23,11 +33,13 @@
 	margin: 10px auto;
     margin-top: 0px;
     text-align: center;
+	border-radius: 10px;
 }
 .server .content{
     background:#eee;
     width: 100%;
 	border: 1px #bdf solid;
+	border-radius: 10px;
 }
 .server .content .attrs{
     font-family:Arial; 
